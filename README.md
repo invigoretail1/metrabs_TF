@@ -20,27 +20,19 @@ The repo has been updated to an improved version employed in the following paper
 *by István Sárándi, Alexander Hermans, Bastian Leibe*<br>
 IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), 2023.
 
+# Guidelines
 
-## News
+- Clone the repository locally.
+- Download the model files from (https://bit.ly/metrabs_l) and extract the content at ```demos/models/metrabs_l/```
+- Create a mamba environment for this using ```mamba env create -f environment1.yml```
+- Activate the environment using ``` mamba activate metrabs_envf ```
+- Run the following command
+  ```
+  export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda-11.8/lib64:$HOME/.local/lib/python3.9/site-packages/nvidia/cudnn/lib:/home/bel/miniconda3/envs/metrabs_envf/lib:/home/bel/miniconda3/envs/metrabs_envf/lib/python3.9/site-packages/tensorflow:/home/bel/miniconda3/envs/metrabs_envf/lib/python3.9/site-packages/tensorflow_io/python/ops:/usr/lib/x86_64-linux-gnu
+  ```
+- After this go the demos folder ``` cd demos ``` and run
+  ``` python demo_video.py /home/bel/Metralabs/TF/metrabs/img/Video.mp4 ```
 
-* [2023-08-02] Major codebase refactoring, models as described in our [WACV'23 paper](https://istvansarandi.com/dozens), several components factored out into separate repos, PyTorch support for inference, and more.
-* [2021-12-03] Added new backbones, including the ResNet family from ResNet-18 to ResNet-152
-* [2021-10-19] Released new best-performing [models](docs/MODELS.md) based on EfficientNetV2 and super fast
-  ones using MobileNetV3, simplified [API](docs/API.md), multiple skeleton conventions, support for
-  radial/tangential distortion, improved antialiasing, plausibility filtering and other new
-  features.
-* [2021-10-19] Full codebase migrated to TensorFlow 2 and Keras
-* [2020-11-19] Oral presentation at the IEEE Conference on Automatic Face and Gesture Recognition
-  (FG'20) ([Talk Video](https://youtu.be/BemM8-Lx47g)
-  and [Slides](https://vision.rwth-aachen.de/media/papers/203/slides_metrabs.pdf))
-* [2020-11-16] Training and evaluation code now released along with dataset pre-processing scripts!
-  Code and models upgraded to Tensorflow 2.
-* [2020-10-06] [Journal paper](https://arxiv.org/abs/2007.07227) accepted for publication in the
-  IEEE Transactions on Biometrics, Behavior, and Identity Science (T-BIOM), Best of FG Special Issue
-* [2020-08-23] Short presentation at ECCV2020's 3DPW
-  workshop ([slides](https://vision.rwth-aachen.de/media/papers/203/metrabs_3dpw_slides.pdf))
-* [2020-08-06] Our method has won
-  the **[3DPW Challenge](https://virtualhumans.mpi-inf.mpg.de/3DPW_Challenge/)**
 
 ## Inference Code
 
@@ -62,28 +54,6 @@ pred = model.detect_poses(image)
 pred['boxes'], pred['poses2d'], pred['poses3d']
 ```
 
-See also the [demos](demos/) folder for more examples.
-
-NOTE: The models can only be used for **non-commercial** purposes due to the licensing of the used
-training datasets.
-
-Alternatively, you can try the experimental PyTorch version:
-
-```bash
-wget -O - https://bit.ly/metrabs_l_pt | tar -xzvf -
-python -m metrabs_pytorch.scripts.demo_image --model-dir metrabs_eff2l_384px_800k_28ds_pytorch --image img/test_image_3dpw.jpg
-```
-
-### Demos
-
-* [```./demo.py```](demos/demo.py) to auto-download the model, predict on a sample image and display the
-  result with Matplotlib or [PoseViz](https://github.com/isarandi/poseviz) (if installed).
-* [```./demo_video.py```](demos/demo_video.py)``` filepath-or-url-to-video.mp4``` to run inference on a video.
-
-### Documentation
-
-- **[How-to Guide with Examples](docs/INFERENCE_GUIDE.md)**
-- **[Full API Reference](docs/API.md)**
 
 ### Feature Summary
 
@@ -105,45 +75,7 @@ python -m metrabs_pytorch.scripts.demo_image --model-dir metrabs_eff2l_384px_800
 
 See the docs directory.
 
-## BibTeX
 
-If you find this work useful in your research, please cite it as:
-
-```bibtex
-@article{sarandi2021metrabs,
-  title={{MeTRAbs:} Metric-Scale Truncation-Robust Heatmaps for Absolute 3{D} Human Pose Estimation},
-  author={S\'ar\'andi, Istv\'an and Linder, Timm and Arras, Kai O. and Leibe, Bastian},
-  journal={IEEE Transactions on Biometrics, Behavior, and Identity Science},
-  year={2021},
-  volume={3},
-  number={1},
-  pages={16-30},
-  doi={10.1109/TBIOM.2020.3037257}
-}
-```
-
-The above paper is an extended journal version of the FG'2020 conference paper:
-
-```bibtex
-@inproceedings{Sarandi20FG,
-  title={Metric-Scale Truncation-Robust Heatmaps for 3{D} Human Pose Estimation},
-  author={S\'ar\'andi, Istv\'an and Linder, Timm and Arras, Kai O. and Leibe, Bastian},
-  booktitle={IEEE International Conference on Automatic Face and Gesture Recognition},
-  pages={677-684},
-  year={2020}
-}
-```
-
-The newer large-scale models correspond to the WACV'23 paper:
-
-```bibtex
-@inproceedings{Sarandi2023dozens,
-    author = {S\'ar\'andi, Istv\'an and Hermans, Alexander and Leibe, Bastian},
-    title = {Learning {3D} Human Pose Estimation from Dozens of Datasets using a Geometry-Aware Autoencoder to Bridge Between Skeleton Formats},
-    booktitle = {IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
-    year = {2023}
-} 
-```
 
 ## Contact
 
