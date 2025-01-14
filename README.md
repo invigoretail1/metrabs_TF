@@ -7,18 +7,6 @@
 <p align="center"><a href="https://youtu.be/4VFKiiW9RCQ"><img src=img/thumbnail_video_qual.png width="30%"></a>
 <a href="https://youtu.be/BemM8-Lx47g"><img src=img/thumbnail_video_conf.png width="30%"></a></p>
 
-This repository contains code for the following paper:
-
-**[MeTRAbs: Metric-Scale Truncation-Robust Heatmaps for Absolute 3D Human Pose Estimation](https://arxiv.org/abs/2007.07227)** <br>
-*by István Sárándi, Timm Linder, Kai O. Arras, Bastian Leibe*<br>
-IEEE Transactions on Biometrics, Behavior, and Identity Science (T-BIOM), Selected Best Works From
-Automated Face and Gesture Recognition 2020.
-
-The repo has been updated to an improved version employed in the following paper: 
-
-**[Learning 3D Human Pose Estimation from Dozens of Datasets using a Geometry-Aware Autoencoder to Bridge Between Skeleton Formats ](https://arxiv.org/abs/2212.14474)** <br>
-*by István Sárándi, Alexander Hermans, Bastian Leibe*<br>
-IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), 2023.
 
 # Guidelines
 
@@ -32,27 +20,6 @@ IEEE/CVF Winter Conference on Applications of Computer Vision (WACV), 2023.
   ```
 - After this go the demos folder ``` cd demos ``` and run
   ``` python demo_video.py /home/bel/Metralabs/TF/metrabs/img/Video.mp4 ```
-
-
-## Inference Code
-
-We release **standalone TensorFlow models** (SavedModel) to allow easy application in downstream
-research. After loading the model, you can run inference in a single line of Python **without having
-this codebase as a dependency**. Try it in action in
-[Google Colab](
-https://colab.research.google.com/github/isarandi/metrabs/blob/master/metrabs_demo.ipynb).
-
-### Gist of Usage
-
-```python
-import tensorflow as tf
-import tensorflow_hub as tfhub
-
-model = tfhub.load('https://bit.ly/metrabs_l')
-image = tf.image.decode_jpeg(tf.io.read_file('img/test_image_3dpw.jpg'))
-pred = model.detect_poses(image)
-pred['boxes'], pred['poses2d'], pred['poses3d']
-```
 
 
 ### Feature Summary
