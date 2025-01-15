@@ -14,7 +14,7 @@
 - Download the model files from (https://bit.ly/metrabs_l) and extract the content at ```demos/models/metrabs_l/```
 - Create a mamba environment for this using ```mamba env create -f environment1.yml```
 - Activate the environment using ``` mamba activate metrabs_envf ```
-- Run the following command
+- Run the following command, Change the user ```bel``` to whatever is your username. If the path of your environment is different then change that as well.
   ```
   export LD_LIBRARY_PATH=/usr/local/cuda/lib64:/usr/local/cuda-11.8/lib64:$HOME/.local/lib/python3.9/site-packages/nvidia/cudnn/lib:/home/bel/miniconda3/envs/metrabs_envf/lib:/home/bel/miniconda3/envs/metrabs_envf/lib/python3.9/site-packages/tensorflow:/home/bel/miniconda3/envs/metrabs_envf/lib/python3.9/site-packages/tensorflow_io/python/ops:/usr/lib/x86_64-linux-gnu
   ```
